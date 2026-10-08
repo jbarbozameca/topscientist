@@ -1,4 +1,11 @@
-<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{color-scheme:light dark}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
 <title>Atlas Top 2 % 2026</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -404,16 +411,22 @@ function applyStatic(){
   document.querySelectorAll('.seg.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang===LANG));
   mkRegion();
 }
+let loadError=null;
 function setLang(l){
-  LANG = l; try{ localStorage.setItem('t2lang', l); }catch(e){}
+  LANG = l; if(loadError) document.getElementById('load-msg').textContent=t('loadErr')(loadError); try{ localStorage.setItem('t2lang', l); }catch(e){}
   applyStatic(); drawT2();
   if(META){ cnameCache.clear(); fillSelects(); syncForm(); renderTab(activeTab()); }
 }
 document.querySelectorAll('.seg.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
 applyStatic();
 
+let DATA_BASE = null; // 'data/' (artifact) or '' (files at site root, e.g. GitHub Pages)
 async function getGz(url, onProg){
-  const res = await fetch(url);
+  let res;
+  if(DATA_BASE===null){
+    res = await fetch('data/'+url);
+    if(res.ok) DATA_BASE='data/'; else { res = await fetch(url); if(res.ok) DATA_BASE=''; }
+  } else res = await fetch(DATA_BASE+url);
   if(!res.ok) throw new Error(url+' '+res.status);
   const b64 = (await res.text()).trim();
   const bin = atob(b64); const buf = new Uint8Array(bin.length);
@@ -427,7 +440,7 @@ async function getGz(url, onProg){
 }
 const dec = new TextDecoder();
 async function loadDS(k, prog){
-  const [bin, names] = await Promise.all([getGz('data/'+k+'.txt', prog), getGz('data/'+k+'-names.txt', prog)]);
+  const [bin, names] = await Promise.all([getGz(k+'.txt', prog), getGz(k+'-names.txt', prog)]);
   const n = META[k], d = {n};
   let off = 0; const ab = bin.buffer.slice(bin.byteOffset, bin.byteOffset+bin.byteLength);
   for(const [name, dt] of META.spec){
@@ -709,7 +722,7 @@ drawT2();
 (async function(){
   const bar=$('load-bar'); let done=0; const prog=()=>{done++; bar.style.width=(done/5*100)+'%';};
   try{
-    META = JSON.parse(dec.decode(await getGz('data/meta.txt'))); prog();
+    META = JSON.parse(dec.decode(await getGz('meta.txt'))); prog();
     DS.career = await loadDS('career', prog);
     fillSelects(); syncForm();
     $('loader').hidden=true;
@@ -721,9 +734,10 @@ drawT2();
     DS.singleyr = await loadDS('singleyr', prog);
     renderTab(activeTab());
   }catch(err){
-    $('load-msg').textContent=t('loadErr')(err.message);
+    loadError=err.message; $('load-msg').textContent=t('loadErr')(err.message);
   }
 })();
 </script>
 
-</body></html>
+</body>
+</html>

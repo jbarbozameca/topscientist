@@ -1,0 +1,729 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Atlas Top 2 % 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: instrument-panel registry. Header band with credit line, tab rail, then per-tab panels; data tables in their own scroll boxes. */
+:root{
+  --bg:#eef2f1; --panel:#fbfcfc; --ink:#13262b; --muted:#566a6d; --line:#cfd9d8;
+  --accent:#0d6b70; --accent-soft:#d5e8e7; --hi:#b56d00; --hi-soft:#f6e6c8; --bad:#a3312a;
+  --f-display:"IBM Plex Sans Condensed","Arial Narrow",system-ui,sans-serif;
+  --f-body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0e181a; --panel:#152225; --ink:#e2ebe9; --muted:#93a6a8; --line:#2a3b3e;
+  --accent:#55b9b4; --accent-soft:#1d3a3b; --hi:#f0b44a; --hi-soft:#3a2e17; --bad:#ec7a70; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e181a; --panel:#152225; --ink:#e2ebe9; --muted:#93a6a8; --line:#2a3b3e;
+  --accent:#55b9b4; --accent-soft:#1d3a3b; --hi:#f0b44a; --hi-soft:#3a2e17; --bad:#ec7a70; color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+[data-l]{}
+:root:not([data-lang="en"]) [data-l="en"]{display:none!important}
+:root[data-lang="en"] [data-l="es"]{display:none!important}
+.xhint{flex-basis:100%;background:var(--hi-soft);padding:8px 10px}
+.summary .xhint b{font-family:var(--f-body);font-weight:600}
+.topbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.seg.lang button{font-size:13px;padding:5px 10px}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5}
+.wrap{max-width:1240px;margin:0 auto;padding-inline:clamp(16px,3vw,32px);padding-block:0 48px}
+header.top{padding-block:28px 18px;display:grid;gap:14px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-family:var(--f-display);font-weight:700;font-size:clamp(30px,5vw,52px);line-height:1.02;margin:0;letter-spacing:-.01em;text-wrap:balance}
+h1 .pct{color:var(--accent)}
+h2{font-family:var(--f-display);font-weight:600;font-size:24px;margin:0;text-wrap:balance}
+h3{font-family:var(--f-display);font-weight:600;font-size:18px;margin:0}
+p{margin:0;max-width:72ch}
+a{color:var(--accent)}
+.credit{border-left:3px solid var(--hi);padding:10px 14px;background:var(--panel);font-size:14px;max-width:none}
+.credit b{font-weight:600}
+nav.tabs{display:flex;gap:2px;flex-wrap:wrap;border-bottom:1px solid var(--line);position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;padding-top:6px}
+nav.tabs button{font:600 15px var(--f-display);letter-spacing:.02em;background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);padding:10px 14px;cursor:pointer}
+nav.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+nav.tabs button:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+section.tab{padding-top:24px;display:grid;gap:28px}
+.figs{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.fig{background:var(--panel);padding:14px 16px;display:grid;gap:2px;align-content:start}
+.fig .v{font:600 28px/1.1 var(--f-display);font-variant-numeric:tabular-nums}
+.fig .l{font-size:13px;color:var(--muted)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,460px),1fr));gap:28px}
+.block{display:grid;gap:12px;align-content:start;min-width:0}
+.sub{color:var(--muted);font-size:14px}
+.seg{display:inline-flex;border:1px solid var(--line);background:var(--panel)}
+.seg button{font:500 14px var(--f-body);border:0;background:none;padding:7px 12px;cursor:pointer;color:var(--muted)}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--panel)}
+/* bar list */
+.bars{display:grid;gap:4px}
+.bar{display:grid;grid-template-columns:minmax(90px,170px) 1fr auto;gap:10px;align-items:center;font-size:13.5px;cursor:pointer;padding:2px 4px;border:0;background:none;color:inherit;text-align:left;font-family:inherit}
+.bar:hover{background:var(--accent-soft)}
+.bar .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .track{height:12px;position:relative;background:transparent}
+.bar .fill{position:absolute;inset:0 auto 0 0;background:var(--accent)}
+.bar .fill2{position:absolute;left:0;height:4px;bottom:-5px;background:var(--hi)}
+.bar .val{font-family:var(--f-mono);font-size:12.5px;font-variant-numeric:tabular-nums;min-width:8ch;text-align:right}
+.bar.me .nm{font-weight:600;color:var(--hi)}
+.legend{display:flex;gap:16px;font-size:12.5px;color:var(--muted);flex-wrap:wrap}
+.legend i{display:inline-block;width:12px;height:8px;margin-right:6px;vertical-align:middle}
+/* controls */
+.controls{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px 14px;background:var(--panel);border:1px solid var(--line);padding:14px}
+.ctl{display:grid;gap:4px;min-width:0}
+.ctl label{font-family:var(--f-mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ctl input,.ctl select{font:14px var(--f-body);padding:8px 9px;border:1px solid var(--line);background:var(--bg);color:var(--ink);width:100%;min-width:0;border-radius:0}
+.ctl.chk{display:flex;align-items:center;gap:8px;align-self:end;padding-bottom:6px}
+.ctl.chk label{text-transform:none;letter-spacing:0;font-family:var(--f-body);font-size:14px;color:var(--ink)}
+.row-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;justify-content:space-between}
+.btn{font:500 14px var(--f-body);border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:7px 12px;cursor:pointer}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);color:var(--panel);border-color:var(--accent)}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12.5px;padding:3px 8px;background:var(--accent-soft);color:var(--ink);border:0;cursor:pointer;font-family:var(--f-body)}
+.chip::after{content:" ×";color:var(--muted)}
+.summary{display:flex;flex-wrap:wrap;gap:6px 22px;font-size:14px}
+.summary b{font-family:var(--f-mono);font-variant-numeric:tabular-nums;font-weight:500}
+/* table */
+.tbox{overflow-x:auto;border:1px solid var(--line);background:var(--panel)}
+table{border-collapse:collapse;width:100%;font-size:13.5px}
+th,td{padding:8px 10px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:500 11.5px var(--f-mono);letter-spacing:.05em;text-transform:uppercase;color:var(--muted);white-space:nowrap;position:sticky;top:0;background:var(--panel)}
+th.sortable{cursor:pointer}
+th.sorted{color:var(--accent)}
+td.n,th.n{text-align:right;font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--accent-soft)}
+td .who{font-weight:600}
+td .aff{color:var(--muted);font-size:12.5px}
+.pill{display:inline-block;font:500 11px var(--f-mono);padding:1px 6px;border:1px solid var(--line);color:var(--muted);white-space:nowrap}
+.pill.t1{border-color:var(--accent);color:var(--accent)}
+.pill.warn{border-color:var(--bad);color:var(--bad)}
+.pctl{display:inline-block;min-width:5.5ch}
+.pager{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:14px}
+.empty{padding:28px;text-align:center;color:var(--muted)}
+/* detail */
+dialog{border:1px solid var(--line);background:var(--panel);color:var(--ink);padding:0;max-width:min(720px,calc(100vw - 32px));width:100%}
+dialog::backdrop{background:rgba(10,20,22,.45)}
+.dlg{padding:20px;display:grid;gap:14px}
+.dlg header{display:flex;justify-content:space-between;gap:12px;align-items:start}
+.kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--line);border:1px solid var(--line)}
+.kv div{background:var(--panel);padding:8px 10px}
+.kv dt{font:500 11px var(--f-mono);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.kv dd{margin:0;font:500 15px var(--f-mono);font-variant-numeric:tabular-nums}
+.note{font-size:13px;color:var(--muted)}
+.loading{display:grid;gap:8px;padding:26px;border:1px dashed var(--line);background:var(--panel)}
+.meter{height:6px;background:var(--line)}
+.meter i{display:block;height:100%;width:0;background:var(--accent);transition:width .2s}
+.prose{display:grid;gap:12px}
+.prose li{margin-bottom:6px}
+ol.refs{padding-left:20px;display:grid;gap:8px;font-size:14px;max-width:90ch}
+.caveat{border:1px solid var(--line);background:var(--panel);padding:14px 16px;display:grid;gap:8px}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--line);font-size:13px;color:var(--muted);display:grid;gap:6px}
+.me-row td{background:var(--hi-soft)}
+@media (max-width:640px){.hide-sm{display:none}.bar{grid-template-columns:minmax(80px,120px) 1fr auto}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+<header class="top">
+  <div class="topbar">
+    <div class="eyebrow"><span data-l="es">Versión 9 · Instantánea Scopus 1 ago 2026 · Citas hasta fin de 2025</span><span data-l="en">Version 9 · Scopus snapshot 1 Aug 2026 · Citations through end of 2025</span></div>
+    <div class="seg lang" role="group" aria-label="Idioma / Language">
+      <button data-lang="es" aria-pressed="true" lang="es">Español</button>
+      <button data-lang="en" aria-pressed="false" lang="en">English</button>
+    </div>
+  </div>
+  <h1><span data-l="es">El <span class="pct">2 %</span> más citado de la ciencia mundial, consultable por país, institución y campo</span><span data-l="en">The world's top <span class="pct">2 %</span> most-cited scientists, searchable by country, institution and field</span></h1>
+  <p class="credit" data-l="es">Datos de <b>John P. A. Ioannidis</b> (Stanford University) con <b>Jeroen Baas</b> (Elsevier): <i>August 2026 data-update for “Updated science-wide author databases of standardized citation indicators”</i>, Elsevier Data Repository, V9, <a href="https://doi.org/10.17632/btchxktzyw.9" target="_blank" rel="noopener">doi:10.17632/btchxktzyw.9</a>. Esta página es una vista de consulta no oficial; los datos se reproducen sin modificación de sus valores.</p>
+  <p class="credit" data-l="en">Data by <b>John P. A. Ioannidis</b> (Stanford University) with <b>Jeroen Baas</b> (Elsevier): <i>August 2026 data-update for “Updated science-wide author databases of standardized citation indicators”</i>, Elsevier Data Repository, V9, <a href="https://doi.org/10.17632/btchxktzyw.9" target="_blank" rel="noopener">doi:10.17632/btchxktzyw.9</a>. This is an unofficial lookup view; values are reproduced without modification.</p>
+</header>
+
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" id="t-resumen" aria-selected="true" data-tab="resumen"><span data-l="es">Resumen</span><span data-l="en">Overview</span></button>
+  <button role="tab" id="t-explorar" aria-selected="false" data-tab="explorar"><span data-l="es">Explorar autores</span><span data-l="en">Explore authors</span></button>
+  <button role="tab" id="t-paises" aria-selected="false" data-tab="paises"><span data-l="es">Países</span><span data-l="en">Countries</span></button>
+  <button role="tab" id="t-inst" aria-selected="false" data-tab="inst"><span data-l="es">Instituciones</span><span data-l="en">Institutions</span></button>
+  <button role="tab" id="t-metodo" aria-selected="false" data-tab="metodo"><span data-l="es">Método y créditos</span><span data-l="en">Methods &amp; credits</span></button>
+</nav>
+
+<div id="loader" class="loading" style="margin-top:24px">
+  <b id="load-msg"><span data-l="es">Cargando la base de datos (≈15 MB comprimidos)…</span><span data-l="en">Loading the database (≈15 MB compressed)…</span></b>
+  <div class="meter"><i id="load-bar"></i></div>
+  <span class="note" data-l="es">Se descargan 243 949 registros de trayectoria y 249 310 del año 2025. Mientras tanto, puede leer la pestaña “Método y créditos”.</span>
+  <span class="note" data-l="en">Downloading 243,949 career-long records and 249,310 single-year 2025 records. Meanwhile you can read the “Methods &amp; credits” tab.</span>
+</div>
+
+<!-- RESUMEN -->
+<section class="tab" id="p-resumen" hidden>
+  <div class="figs" id="figs"></div>
+  <div class="row-actions">
+    <div class="seg" role="group" aria-label="List">
+      <button data-ds="career" aria-pressed="true"><span data-l="es">Trayectoria (career)</span><span data-l="en">Career-long</span></button>
+      <button data-ds="singleyr" aria-pressed="false"><span data-l="es">Año 2025 (single year)</span><span data-l="en">Single year 2025</span></button>
+    </div>
+    <span class="sub" id="ds-desc"></span>
+  </div>
+  <div class="grid2">
+    <div class="block">
+      <h3><span data-l="es">Países con más científicos en la lista</span><span data-l="en">Countries with the most listed scientists</span></h3>
+      <div class="legend"><span><i style="background:var(--accent)"></i><span data-l="es">Lista seleccionada</span><span data-l="en">Selected list</span></span><span><i style="background:var(--hi)"></i><span data-l="es">Otra lista</span><span data-l="en">Other list</span></span></div>
+      <div class="bars" id="bars-cntry"></div>
+    </div>
+    <div class="block">
+      <h3><span data-l="es">Distribución por campo científico</span><span data-l="en">Distribution by scientific field</span></h3>
+      <p class="sub"><span data-l="es">Campo principal Science-Metrix de cada autor. Clic para filtrar.</span><span data-l="en">Each author's main Science-Metrix field. Click to filter.</span></p>
+      <div class="bars" id="bars-field"></div>
+    </div>
+  </div>
+  <div class="grid2">
+    <div class="block">
+      <h3><span data-l="es">América Latina y el Caribe</span><span data-l="en">Latin America and the Caribbean</span></h3>
+      <div class="bars" id="bars-latam"></div>
+    </div>
+    <div class="block">
+      <h3><span data-l="es">Perú: instituciones en la lista</span><span data-l="en">Peru: institutions in the list</span></h3>
+      <p class="sub" id="peru-sub"></p>
+      <div class="bars" id="bars-peru"></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPLORAR -->
+<section class="tab" id="p-explorar" hidden>
+  <div class="row-actions">
+    <div class="seg" role="group" aria-label="List">
+      <button data-ds="career" aria-pressed="true"><span data-l="es">Trayectoria (career)</span><span data-l="en">Career-long</span></button>
+      <button data-ds="singleyr" aria-pressed="false"><span data-l="es">Año 2025 (single year)</span><span data-l="en">Single year 2025</span></button>
+    </div>
+    <button class="btn" id="reset"><span data-l="es">Limpiar filtros</span><span data-l="en">Clear filters</span></button>
+  </div>
+  <form class="controls" id="filters" autocomplete="off">
+    <div class="ctl"><label for="f-name"><span data-l="es">Autor</span><span data-l="en">Author</span></label><input id="f-name" type="search" data-ph-es="Apellido, nombre" data-ph-en="Surname, given name"></div>
+    <div class="ctl"><label for="f-cntry"><span data-l="es">País</span><span data-l="en">Country</span></label><select id="f-cntry"></select></div>
+    <div class="ctl"><label for="f-inst"><span data-l="es">Institución</span><span data-l="en">Institution</span></label><input id="f-inst" list="dl-inst" data-ph-es="Escriba para buscar" data-ph-en="Type to search"><datalist id="dl-inst"></datalist></div>
+    <div class="ctl"><label for="f-field"><span data-l="es">Campo</span><span data-l="en">Field</span></label><select id="f-field"></select></div>
+    <div class="ctl"><label for="f-sub"><span data-l="es">Subcampo</span><span data-l="en">Subfield</span></label><select id="f-sub"></select></div>
+    <div class="ctl"><label for="f-sort"><span data-l="es">Ordenar por</span><span data-l="en">Sort by</span></label><select id="f-sort">
+      <option value="r" data-es="Ranking global (c-score)" data-en="Global rank (c-score)">Ranking global (c-score)</option>
+      <option value="pct" data-es="Percentil en su subcampo" data-en="Percentile within subfield">Percentil en su subcampo</option>
+      <option value="h" data-es="Índice h" data-en="h-index">Índice h</option>
+      <option value="nc" data-es="Citas" data-en="Citations">Citas</option>
+      <option value="sp" data-es="% autocitas" data-en="% self-citations">% autocitas</option>
+      <option value="fy" data-es="Año de primera publicación" data-en="Year of first publication">Año de primera publicación</option>
+    </select></div>
+    <div class="ctl"><label for="f-incl"><span data-l="es">Criterio de inclusión</span><span data-l="en">Inclusion criterion</span></label><select id="f-incl">
+      <option value="" data-es="Cualquiera" data-en="Any">Cualquiera</option>
+      <option value="top" data-es="Top 100 000 global" data-en="Global top 100,000">Top 100 000 global</option>
+      <option value="sub" data-es="Solo top 2 % del subcampo" data-en="Subfield top 2 % only">Solo top 2 % del subcampo</option>
+    </select></div>
+    <div class="ctl chk"><input type="checkbox" id="f-ns"><label for="f-ns"><span data-l="es">Métricas sin autocitas (ns)</span><span data-l="en">Metrics excluding self-citations (ns)</span></label></div>
+  </form>
+  <div class="summary" id="summary"></div>
+  <div class="tbox"><table id="tbl"><thead></thead><tbody></tbody></table></div>
+  <div class="pager" id="pager"></div>
+</section>
+
+<!-- PAISES -->
+<section class="tab" id="p-paises" hidden>
+  <div class="block">
+    <h2><span data-l="es">Países</span><span data-l="en">Countries</span></h2>
+    <p class="sub" data-l="es">País de la institución más reciente del autor según Scopus. “Percentil medio” es la mediana del percentil de cada autor dentro de su subcampo (menor es mejor). Clic en una fila para ver sus autores.</p>
+    <p class="sub" data-l="en">Country of the author's most recent institution according to Scopus. “Median percentile” is the median of each author's percentile within their subfield (lower is better). Click a row to see its authors.</p>
+  </div>
+  <div class="controls" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+    <div class="ctl"><label for="pc-q"><span data-l="es">Buscar país</span><span data-l="en">Search country</span></label><input id="pc-q" type="search" data-ph-es="Ej. Perú" data-ph-en="e.g. Peru"></div>
+  </div>
+  <div class="tbox"><table id="tbl-c"><thead></thead><tbody></tbody></table></div>
+</section>
+
+<!-- INSTITUCIONES -->
+<section class="tab" id="p-inst" hidden>
+  <div class="block">
+    <h2><span data-l="es">Instituciones</span><span data-l="en">Institutions</span></h2>
+    <p class="sub" data-l="es">Afiliación asignada por Scopus (una por autor, la más reciente). Solo se nombran instituciones grandes; las columnas muestran autores en cada lista.</p>
+    <p class="sub" data-l="en">Affiliation assigned by Scopus (one per author, the most recent). Only large institutions are named; the columns show authors in each list.</p>
+  </div>
+  <div class="controls" style="grid-template-columns:repeat(auto-fit,minmax(220px,1fr))">
+    <div class="ctl"><label for="pi-c"><span data-l="es">País</span><span data-l="en">Country</span></label><select id="pi-c"></select></div>
+    <div class="ctl"><label for="pi-q"><span data-l="es">Buscar institución</span><span data-l="en">Search institution</span></label><input id="pi-q" type="search" data-ph-es="Ej. Cayetano Heredia" data-ph-en="e.g. Cayetano Heredia"></div>
+  </div>
+  <div class="tbox"><table id="tbl-i"><thead></thead><tbody></tbody></table></div>
+  <div class="pager" id="pager-i"></div>
+</section>
+
+<!-- METODO -->
+<section class="tab" id="p-metodo" hidden>
+  <div class="grid2">
+    <div class="block prose" data-l="es">
+      <h2>Qué es esta base</h2>
+      <p>Es una base pública de científicos muy citados construida desde perfiles de autor de Scopus. Para cada persona se calculan métricas estandarizadas: citas totales, índice h, índice hm ajustado por coautoría, citas según la posición de autoría (único, primero, último) y un indicador compuesto, el <b>c-score</b>. Hay dos listas: <b>trayectoria</b> (citas 1996–2025) y <b>año único</b> (citas recibidas durante 2025). Todo se presenta con y sin autocitas.</p>
+      <h3>Quién entra</h3>
+      <p>Entra quien está entre los <b>100 000 primeros</b> del c-score global (con o sin autocitas) <b>o</b> en el <b>2 % superior de su subcampo</b> (174 subcampos Science-Metrix, entre autores con al menos 5 artículos). Por eso se habla del “top 2 %”: la base de referencia son 11 619 713 autores y la lista final reúne a cerca del 2.1 % de ellos.</p>
+      <h3>Cómo se calcula el c-score</h3>
+      <p>Combina seis indicadores en escala logarítmica, cada uno normalizado por el máximo observado (Tabla 3 del paquete): citas totales (NC), índice h (H), índice hm (Hm), citas como autor único (NCS), como único o primero (NCSF) y como único, primero o último (NCSFL). El número de publicaciones no cuenta. El valor máximo teórico es 6.</p>
+      <p class="note">Valores máximos (log) de la versión 9, trayectoria: NC 13.499 · H 5.820 · Hm 5.058 · NCS 12.158 · NCSF 12.702 · NCSFL 13.058.</p>
+      <h3>Novedades de la versión 9</h3>
+      <ul>
+        <li>Variables de <b>cosmopolitismo</b>: países con al menos 10 % de los artículos del autor (cosmo, cntry_10pct, top_cntry_career).</li>
+        <li>Se mantienen los datos de <b>retracciones</b> (Retraction Watch): artículos retractados, citas a ellos y citas desde ellos.</li>
+      </ul>
+    </div>
+    <div class="block prose" data-l="en">
+      <h2>What this database is</h2>
+      <p>A public database of highly cited scientists built from Scopus author profiles. For each person it computes standardized metrics: total citations, h-index, the co-authorship-adjusted hm-index, citations by authorship position (single, first, last) and a composite indicator, the <b>c-score</b>. There are two lists: <b>career-long</b> (citations 1996–2025) and <b>single year</b> (citations received during 2025). Everything is given with and without self-citations.</p>
+      <h3>Who is included</h3>
+      <p>Scientists in the <b>top 100,000</b> by global c-score (with or without self-citations) <b>or</b> in the <b>top 2 % of their subfield</b> (174 Science-Metrix subfields, among authors with at least 5 papers). Hence the “top 2 %” label: the reference base is 11,619,713 authors and the final list holds about 2.1 % of them.</p>
+      <h3>How the c-score is computed</h3>
+      <p>It combines six log-transformed indicators, each normalized by the observed maximum (Table 3 of the package): total citations (NC), h-index (H), hm-index (Hm), citations to single-authored papers (NCS), single or first (NCSF) and single, first or last (NCSFL). Number of publications does not count. The theoretical maximum is 6.</p>
+      <p class="note">Version 9 career-long maximum values (log): NC 13.499 · H 5.820 · Hm 5.058 · NCS 12.158 · NCSF 12.702 · NCSFL 13.058.</p>
+      <h3>New in version 9</h3>
+      <ul>
+        <li><b>Cosmopolitanism</b> variables: countries holding at least 10 % of an author's papers (cosmo, cntry_10pct, top_cntry_career).</li>
+        <li><b>Retraction</b> data (Retraction Watch) continue: retracted papers, citations to them and citations from them.</li>
+      </ul>
+    </div>
+    <div class="block">
+      <div class="caveat" data-l="es">
+        <h3>Lo que los autores piden tener presente</h3>
+        <ul class="prose" style="padding-left:18px;margin:0">
+          <li>No estar en la lista no significa que el trabajo de alguien sea de baja calidad; estar en ella tampoco garantiza excelencia.</li>
+          <li>Los datos son de Scopus tal como estaban el 1 de agosto de 2026. Las correcciones se piden a Scopus (Author Feedback Wizard), no a los autores de la base, y aparecen en la versión siguiente.</li>
+          <li>No se emiten certificados. Vender certificados basados en estos datos es inapropiado: la base es de uso público y no comercial.</li>
+          <li>Para comparar instituciones conviene ajustar por tamaño y mirar también indicadores de integridad, como retracciones y autocitas.</li>
+          <li>Una sola afiliación por autor, elegida por Scopus a partir de sus artículos más recientes.</li>
+        </ul>
+      </div>
+      <div class="caveat" data-l="en">
+        <h3>What the authors ask users to keep in mind</h3>
+        <ul class="prose" style="padding-left:18px;margin:0">
+          <li>Not being listed does not mean someone's work is of low quality; being listed does not guarantee excellence either.</li>
+          <li>Data reflect Scopus as of 1 August 2026. Corrections go to Scopus (Author Feedback Wizard), not to the database creators, and appear in the next version.</li>
+          <li>No certificates are issued. Selling certificates based on these data is inappropriate: the database is for free, non-commercial public use.</li>
+          <li>Institutional comparisons should adjust for size and also look at integrity proxies such as retractions and self-citation.</li>
+          <li>One affiliation per author, chosen by Scopus from their most recent papers.</li>
+        </ul>
+      </div>
+      <h3 style="margin-top:8px"><span data-l="es">Umbrales por campo (Tabla 2, trayectoria)</span><span data-l="en">Field thresholds (Table 2, career-long)</span></h3>
+      <div class="tbox"><table id="tbl-t2"><thead></thead><tbody></tbody></table></div>
+      <p class="note"><span data-l="es">“Autores” = autores con ≥5 artículos en el campo. P50 y P99: citas de la mediana y del percentil 99 entre todos ellos.</span><span data-l="en">“Authors” = authors with ≥5 papers in the field. P50 and P99: citations at the median and the 99th percentile among all of them.</span></p>
+    </div>
+  </div>
+  <div class="block">
+    <h2><span data-l="es">Créditos y cita sugerida</span><span data-l="en">Credits and suggested citation</span></h2>
+    <p data-l="es"><b>Creadores de la base:</b> John P. A. Ioannidis (Meta-Research Innovation Center at Stanford, METRICS, Stanford University) y Jeroen Baas (Elsevier). Versiones metodológicas previas con Kevin W. Boyack y Richard Klavans (SciTech Strategies). Datos de Scopus (Elsevier) y clasificación de Science-Metrix.</p>
+    <p data-l="en"><b>Database creators:</b> John P. A. Ioannidis (Meta-Research Innovation Center at Stanford, METRICS, Stanford University) and Jeroen Baas (Elsevier). Earlier methodological versions with Kevin W. Boyack and Richard Klavans (SciTech Strategies). Data from Scopus (Elsevier); Science-Metrix classification.</p>
+    <p class="credit" style="font-family:var(--f-mono);font-size:13px">Ioannidis JPA. August 2026 data-update for “Updated science-wide author databases of standardized citation indicators”. Elsevier Data Repository, V9; 2026. doi:10.17632/btchxktzyw.9</p>
+    <h3><span data-l="es">Artículos metodológicos</span><span data-l="en">Methods papers</span></h3>
+    <ol class="refs">
+      <li>Ioannidis JPA, Boyack KW, Baas J. Updated science-wide author databases of standardized citation indicators. <i>PLoS Biol</i>. 2020;18(10):e3000918. <a href="https://doi.org/10.1371/journal.pbio.3000918" target="_blank" rel="noopener">doi:10.1371/journal.pbio.3000918</a></li>
+      <li>Ioannidis JPA, Baas J, Klavans R, Boyack KW. A standardized citation metrics author database annotated for scientific field. <i>PLoS Biol</i>. 2019;17(8):e3000384. <a href="https://doi.org/10.1371/journal.pbio.3000384" target="_blank" rel="noopener">doi:10.1371/journal.pbio.3000384</a></li>
+      <li>Ioannidis JPA, Klavans R, Boyack KW. Multiple citation indicators and their composite across scientific disciplines. <i>PLoS Biol</i>. 2016;14(7):e1002501. <a href="https://doi.org/10.1371/journal.pbio.1002501" target="_blank" rel="noopener">doi:10.1371/journal.pbio.1002501</a></li>
+      <li>Ioannidis JPA, Pezzullo AM, Cristiano A, Boccia S, Baas J. Linking citation and retraction data reveals the demographics of scientific retractions among highly cited authors. <i>PLoS Biol</i>. 2025;23(1):e3002999. <a href="https://doi.org/10.1371/journal.pbio.3002999" target="_blank" rel="noopener">doi:10.1371/journal.pbio.3002999</a></li>
+      <li>Ioannidis JPA, Baas J. Mapping scientific cosmopolitanism: scientists with publication records substantially split across multiple countries. <i>bioRxiv</i> 2026. <a href="https://doi.org/10.64898/2026.10.01.755970" target="_blank" rel="noopener">doi:10.64898/2026.10.01.755970</a></li>
+    </ol>
+  </div>
+</section>
+
+<footer>
+  <span data-l="es">Fuente de datos: Ioannidis JPA &amp; Baas J, Elsevier Data Repository V9 (2026), doi:10.17632/btchxktzyw.9 · Basado en Scopus. Uso no comercial.</span>
+  <span data-l="en">Data source: Ioannidis JPA &amp; Baas J, Elsevier Data Repository V9 (2026), doi:10.17632/btchxktzyw.9 · Based on Scopus. Non-commercial use.</span>
+  <span data-l="es">Visor elaborado por Joshuan J. Barboza (Universidad Señor de Sipán) a partir de las Tablas 1–3 y el FAQ publicados por los autores. No es un producto oficial de Stanford University ni de Elsevier.</span>
+  <span data-l="en">Viewer built by Joshuan J. Barboza (Universidad Señor de Sipán) from Tables 1–3 and the FAQ published by the database authors. Not an official product of Stanford University or Elsevier.</span>
+</footer>
+</div>
+
+<dialog id="dlg"><div class="dlg" id="dlg-body"></div></dialog>
+
+<script>
+const T2 = {"career":[["Applied Sciences","Agriculture, Fisheries & Forestry",434489,8588,156,6085],["Applied Sciences","Built Environment & Design",73753,1526,112,5219],["Applied Sciences","Enabling & Strategic Technologies",1074096,21525,129,8406],["Applied Sciences","Engineering",910141,19516,98,5713],["Applied Sciences","Information & Communication Technologies",910811,18087,81,6150],["Arts & Humanities","Communication & Textual Studies",63964,1311,44,2824],["Arts & Humanities","Historical Studies",59008,1232,56,2888],["Arts & Humanities","Philosophy & Theology",30497,612,41,2115],["Arts & Humanities","Visual & Performing Arts",7188,108,19,636],["Economic & Social Sciences","Economics & Business",227917,4838,148,7105],["Economic & Social Sciences","Social Sciences",265152,5871,93,4155],["Health Sciences","Biomedical Research",897823,18486,314,16421],["Health Sciences","Clinical Medicine",3599268,74888,196,14972],["Health Sciences","Psychology & Cognitive Sciences",141053,4007,209,12153],["Health Sciences","Public Health & Health Services",223175,4440,140,8025],["Natural Sciences","Biology",445736,9461,212,9930],["Natural Sciences","Chemistry",804950,16730,201,8807],["Natural Sciences","Earth & Environmental Sciences",399932,8272,211,11287],["Natural Sciences","Mathematics & Statistics",138254,2971,88,4962],["Natural Sciences","Physics & Astronomy",912046,21480,186,37981],["","Unassigned",460,0,1,269],["","TOTAL",11619713,243949,163,12267]],"s2f":{"Agronomy & Agriculture":"Agriculture, Fisheries & Forestry","Dairy & Animal Science":"Agriculture, Fisheries & Forestry","Fisheries":"Agriculture, Fisheries & Forestry","Food Science":"Agriculture, Fisheries & Forestry","Forestry":"Agriculture, Fisheries & Forestry","Horticulture":"Agriculture, Fisheries & Forestry","Veterinary Sciences":"Agriculture, Fisheries & Forestry","Architecture":"Built Environment & Design","Building & Construction":"Built Environment & Design","Design Practice & Management":"Built Environment & Design","Urban & Regional Planning":"Built Environment & Design","Bioinformatics":"Enabling & Strategic Technologies","Biotechnology":"Enabling & Strategic Technologies","Energy":"Enabling & Strategic Technologies","Materials":"Enabling & Strategic Technologies","Nanoscience & Nanotechnology":"Enabling & Strategic Technologies","Optoelectronics & Photonics":"Enabling & Strategic Technologies","Strategic, Defence & Security Studies":"Enabling & Strategic Technologies","Aerospace & Aeronautics":"Engineering","Automobile Design & Engineering":"Engineering","Biomedical Engineering":"Engineering","Chemical Engineering":"Engineering","Civil Engineering":"Engineering","Electrical & Electronic Engineering":"Engineering","Environmental Engineering":"Engineering","Geological & Geomatics Engineering":"Engineering","Industrial Engineering & Automation":"Engineering","Mechanical Engineering & Transports":"Engineering","Mining & Metallurgy":"Engineering","Operations Research":"Engineering","Artificial Intelligence & Image Processing":"Information & Communication Technologies","Computation Theory & Mathematics":"Information & Communication Technologies","Computer Hardware & Architecture":"Information & Communication Technologies","Distributed Computing":"Information & Communication Technologies","Information Systems":"Information & Communication Technologies","Medical Informatics":"Information & Communication Technologies","Networking & Telecommunications":"Information & Communication Technologies","Software Engineering":"Information & Communication Technologies","Communication & Media Studies":"Communication & Textual Studies","Languages & Linguistics":"Communication & Textual Studies","Literary Studies":"Communication & Textual Studies","Anthropology":"Historical Studies","Archaeology":"Historical Studies","Classics":"Historical Studies","History":"Historical Studies","History of Science, Technology & Medicine":"Historical Studies","History of Social Sciences":"Historical Studies","Applied Ethics":"Philosophy & Theology","Philosophy":"Philosophy & Theology","Religions & Theology":"Philosophy & Theology","Art Practice, History & Theory":"Visual & Performing Arts","Drama & Theater":"Visual & Performing Arts","Folklore":"Visual & Performing Arts","Music":"Visual & Performing Arts","Accounting":"Economics & Business","Agricultural Economics & Policy":"Economics & Business","Business & Management":"Economics & Business","Development Studies":"Economics & Business","Econometrics":"Economics & Business","Economic Theory":"Economics & Business","Economics":"Economics & Business","Finance":"Economics & Business","Industrial Relations":"Economics & Business","Logistics & Transportation":"Economics & Business","Marketing":"Economics & Business","Sport, Leisure & Tourism":"Economics & Business","Criminology":"Social Sciences","Cultural Studies":"Social Sciences","Demography":"Social Sciences","Education":"Social Sciences","Family Studies":"Social Sciences","Gender Studies":"Social Sciences","Geography":"Social Sciences","Information & Library Sciences":"Social Sciences","International Relations":"Social Sciences","Law":"Social Sciences","Political Science & Public Administration":"Social Sciences","Science Studies":"Social Sciences","Social Sciences Methods":"Social Sciences","Social Work":"Social Sciences","Sociology":"Social Sciences","Anatomy & Morphology":"Biomedical Research","Biochemistry & Molecular Biology":"Biomedical Research","Biophysics":"Biomedical Research","Developmental Biology":"Biomedical Research","Genetics & Heredity":"Biomedical Research","Microbiology":"Biomedical Research","Microscopy":"Biomedical Research","Mycology & Parasitology":"Biomedical Research","Nutrition & Dietetics":"Biomedical Research","Physiology":"Biomedical Research","Toxicology":"Biomedical Research","Virology":"Biomedical Research","Allergy":"Clinical Medicine","Anesthesiology":"Clinical Medicine","Arthritis & Rheumatology":"Clinical Medicine","Cardiovascular System & Hematology":"Clinical Medicine","Complementary & Alternative Medicine":"Clinical Medicine","Dentistry":"Clinical Medicine","Dermatology & Venereal Diseases":"Clinical Medicine","Emergency & Critical Care Medicine":"Clinical Medicine","Endocrinology & Metabolism":"Clinical Medicine","Environmental & Occupational Health":"Clinical Medicine","Gastroenterology & Hepatology":"Clinical Medicine","General & Internal Medicine":"Clinical Medicine","General Clinical Medicine":"Clinical Medicine","Geriatrics":"Clinical Medicine","Immunology":"Clinical Medicine","Legal & Forensic Medicine":"Clinical Medicine","Neurology & Neurosurgery":"Clinical Medicine","Nuclear Medicine & Medical Imaging":"Clinical Medicine","Obstetrics & Reproductive Medicine":"Clinical Medicine","Oncology & Carcinogenesis":"Clinical Medicine","Ophthalmology & Optometry":"Clinical Medicine","Orthopedics":"Clinical Medicine","Otorhinolaryngology":"Clinical Medicine","Pathology":"Clinical Medicine","Pediatrics":"Clinical Medicine","Pharmacology & Pharmacy":"Clinical Medicine","Psychiatry":"Clinical Medicine","Respiratory System":"Clinical Medicine","Sport Sciences":"Clinical Medicine","Surgery":"Clinical Medicine","Tropical Medicine":"Clinical Medicine","Urology & Nephrology":"Clinical Medicine","Behavioral Science & Comparative Psychology":"Psychology & Cognitive Sciences","Clinical Psychology":"Psychology & Cognitive Sciences","Developmental & Child Psychology":"Psychology & Cognitive Sciences","Experimental Psychology":"Psychology & Cognitive Sciences","General Psychology & Cognitive Sciences":"Psychology & Cognitive Sciences","Human Factors":"Psychology & Cognitive Sciences","Psychoanalysis":"Psychology & Cognitive Sciences","Social Psychology":"Psychology & Cognitive Sciences","Epidemiology":"Public Health & Health Services","Gerontology":"Public Health & Health Services","Health Policy & Services":"Public Health & Health Services","Nursing":"Public Health & Health Services","Public Health":"Public Health & Health Services","Rehabilitation":"Public Health & Health Services","Speech-Language Pathology & Audiology":"Public Health & Health Services","Substance Abuse":"Public Health & Health Services","Ecology":"Biology","Entomology":"Biology","Evolutionary Biology":"Biology","Marine Biology & Hydrobiology":"Biology","Ornithology":"Biology","Plant Biology & Botany":"Biology","Zoology":"Biology","Analytical Chemistry":"Chemistry","General Chemistry":"Chemistry","Inorganic & Nuclear Chemistry":"Chemistry","Medicinal & Biomolecular Chemistry":"Chemistry","Organic Chemistry":"Chemistry","Physical Chemistry":"Chemistry","Polymers":"Chemistry","Environmental Sciences":"Earth & Environmental Sciences","Geochemistry & Geophysics":"Earth & Environmental Sciences","Geology":"Earth & Environmental Sciences","Meteorology & Atmospheric Sciences":"Earth & Environmental Sciences","Oceanography":"Earth & Environmental Sciences","Paleontology":"Earth & Environmental Sciences","Applied Mathematics":"Mathematics & Statistics","General Mathematics":"Mathematics & Statistics","Numerical & Computational Mathematics":"Mathematics & Statistics","Statistics & Probability":"Mathematics & Statistics","Acoustics":"Physics & Astronomy","Applied Physics":"Physics & Astronomy","Astronomy & Astrophysics":"Physics & Astronomy","Chemical Physics":"Physics & Astronomy","Fluids & Plasmas":"Physics & Astronomy","General Physics":"Physics & Astronomy","Mathematical Physics":"Physics & Astronomy","Nuclear & Particle Physics":"Physics & Astronomy","Optics":"Physics & Astronomy"},"singleyr":[["Applied Sciences","Agriculture, Fisheries & Forestry",434489,8762,23,761],["Applied Sciences","Built Environment & Design",73753,1562,23,865],["Applied Sciences","Enabling & Strategic Technologies",1074096,23813,20,1132],["Applied Sciences","Engineering",910141,19557,14,715],["Applied Sciences","Information & Communication Technologies",910811,18085,11,854],["Arts & Humanities","Communication & Textual Studies",63964,1435,6,352],["Arts & Humanities","Historical Studies",59008,1240,6,265],["Arts & Humanities","Philosophy & Theology",30497,610,5,232],["Arts & Humanities","Visual & Performing Arts",7188,111,2,63],["Economic & Social Sciences","Economics & Business",227917,6512,24,839],["Economic & Social Sciences","Social Sciences",265152,6698,13,455],["Health Sciences","Biomedical Research",897823,17948,27,1267],["Health Sciences","Clinical Medicine",3599268,76155,19,1302],["Health Sciences","Psychology & Cognitive Sciences",141053,4136,25,1023],["Health Sciences","Public Health & Health Services",223175,4458,18,740],["Natural Sciences","Biology",445736,9494,28,971],["Natural Sciences","Chemistry",804950,16855,19,821],["Natural Sciences","Earth & Environmental Sciences",399932,8545,30,1197],["Natural Sciences","Mathematics & Statistics",138254,2949,10,438],["Natural Sciences","Physics & Astronomy",912046,20385,15,3428],["","Unassigned",460,0,0,26],["","TOTAL",11619713,249310,19,1159]]};
+const FIELD_ES = {"Agriculture, Fisheries & Forestry":"Agricultura, pesca y forestal","Built Environment & Design":"Entorno construido y diseño","Enabling & Strategic Technologies":"Tecnologías estratégicas","Engineering":"Ingeniería","Information & Communication Technologies":"TIC","Communication & Textual Studies":"Comunicación y estudios textuales","Historical Studies":"Estudios históricos","Philosophy & Theology":"Filosofía y teología","Visual & Performing Arts":"Artes visuales y escénicas","Economics & Business":"Economía y negocios","Social Sciences":"Ciencias sociales","Biomedical Research":"Investigación biomédica","Clinical Medicine":"Medicina clínica","Psychology & Cognitive Sciences":"Psicología y ciencias cognitivas","Public Health & Health Services":"Salud pública y servicios de salud","Biology":"Biología","Chemistry":"Química","Earth & Environmental Sciences":"Ciencias de la Tierra y ambientales","Mathematics & Statistics":"Matemática y estadística","Physics & Astronomy":"Física y astronomía"};
+const LATAM = ["arg","bol","bra","chl","col","cri","cub","dom","ecu","gtm","hnd","mex","nic","pan","per","pry","slv","ury","ven","jam","tto","pri","brb","hti","blz","guy","sur"];
+
+/* ---------- i18n ---------- */
+const STR = {
+ es:{
+  inCareer:'científicos en la lista de trayectoria', inSingle:'científicos en la lista del año 2025', evaluated:'autores con ≥5 artículos evaluados',
+  share:'proporción incluida', countries:'países representados', insts:'instituciones con nombre', both:'están en ambas listas',
+  descCareer:'Citas acumuladas 1996–2025', descSingle:'Citas recibidas durante 2025',
+  peruSub:(n,k)=>`${n} científicos con afiliación en Perú, en ${k} instituciones. Clic para ver sus autores.`,
+  allCountries:'Todos los países', allFields:'Todos los campos', allSubs:'Todos los subcampos', nAuthors:v=>`${v} autores`,
+  scientists:'científicos', countriesW:'países', instsW:'instituciones', medPct:'Percentil mediano en su subcampo', avgSelf:'Autocitas promedio', withRetr:'Con ≥1 retracción',
+  careerL:'Trayectoria', singleL:'Año 2025',
+  hint:(q,m,l,none)=>`“${q}” tiene ${m} coincidencia(s) en la lista <b>${l}</b>${none?', no en esta':''}.`, seeIn:l=>`Ver en ${l}`,
+  thAuthor:'Autor · institución', thCountry:'País', thSub:'Subcampo', thRank:'Rank global', thPct:'Percentil subcampo', thCitC:'Citas 96–25', thCitS:'Citas 2025', thSelf:'Autocitas',
+  noRows:'Ningún científico cumple estos filtros. Pruebe quitar alguno o cambiar de lista.',
+  prev:'Anterior', next:'Siguiente', page:(a,b)=>`Página ${a} de ${b}`,
+  incTop:'Top 100 000 global', incSub:'Top 2 % de su subcampo', listC:'Lista de trayectoria', listS:'Lista del año 2025', close:'Cerrar',
+  inBoth:'En ambas listas', retr:n=>`${n} artículo(s) retractado(s)`,
+  kRank:'Rank global', kRankNs:'Rank global sin autocitas', kRankSub:'Rank en subcampo', kPct:'Percentil subcampo', kPctNs:'Percentil sin autocitas',
+  kH:'Índice h', kCitC:'Citas 1996–2025', kCitS:'Citas en 2025', kSelf:'Autocitas', kPapers:'Artículos 1960–2025', kYears:'Primera / última publicación', kField:'Campo',
+  mainSub:'Subcampo principal', multiC:'Países con ≥10 % de sus artículos',
+  pctNote:'Percentil = posición en el subcampo ÷ autores del subcampo con ≥5 artículos. Datos: Ioannidis &amp; Baas, V9 (2026).',
+  medPctCol:'Percentil medio', topInst:'Institución con más autores', instCol:'Institución', noInst:'No hay instituciones que coincidan con la búsqueda.', instsN:n=>`${n} instituciones`,
+  t2Field:'Campo', t2Auth:'Autores', t2List:'En lista', t2p50:'P50 citas', t2p99:'P99 citas',
+  loadingList:'Cargando lista…', loadErr:m=>`No se pudo cargar la base: ${m}. Recargue la página para intentarlo de nuevo.`,
+  csk:'Checoslovaquia', eue:'Unión Europea'
+ },
+ en:{
+  inCareer:'scientists in the career-long list', inSingle:'scientists in the single-year 2025 list', evaluated:'authors with ≥5 papers assessed',
+  share:'share included', countries:'countries represented', insts:'named institutions', both:'appear in both lists',
+  descCareer:'Citations accumulated 1996–2025', descSingle:'Citations received during 2025',
+  peruSub:(n,k)=>`${n} scientists affiliated in Peru, across ${k} institutions. Click to see their authors.`,
+  allCountries:'All countries', allFields:'All fields', allSubs:'All subfields', nAuthors:v=>`${v} authors`,
+  scientists:'scientists', countriesW:'countries', instsW:'institutions', medPct:'Median subfield percentile', avgSelf:'Mean self-citation', withRetr:'With ≥1 retraction',
+  careerL:'Career-long', singleL:'Single year 2025',
+  hint:(q,m,l,none)=>`“${q}” has ${m} match(es) in the <b>${l}</b> list${none?', none in this one':''}.`, seeIn:l=>`View in ${l}`,
+  thAuthor:'Author · institution', thCountry:'Country', thSub:'Subfield', thRank:'Global rank', thPct:'Subfield percentile', thCitC:'Cites 96–25', thCitS:'Cites 2025', thSelf:'Self-cites',
+  noRows:'No scientist matches these filters. Try removing one or switching lists.',
+  prev:'Previous', next:'Next', page:(a,b)=>`Page ${a} of ${b}`,
+  incTop:'Global top 100,000', incSub:'Top 2 % of subfield', listC:'Career-long list', listS:'Single-year 2025 list', close:'Close',
+  inBoth:'In both lists', retr:n=>`${n} retracted paper(s)`,
+  kRank:'Global rank', kRankNs:'Global rank excl. self-cites', kRankSub:'Rank in subfield', kPct:'Subfield percentile', kPctNs:'Percentile excl. self-cites',
+  kH:'h-index', kCitC:'Citations 1996–2025', kCitS:'Citations in 2025', kSelf:'Self-citations', kPapers:'Papers 1960–2025', kYears:'First / last publication', kField:'Field',
+  mainSub:'Main subfield', multiC:'Countries with ≥10 % of their papers',
+  pctNote:'Percentile = rank in subfield ÷ authors in the subfield with ≥5 papers. Data: Ioannidis &amp; Baas, V9 (2026).',
+  medPctCol:'Median percentile', topInst:'Institution with most authors', instCol:'Institution', noInst:'No institutions match the search.', instsN:n=>`${n} institutions`,
+  t2Field:'Field', t2Auth:'Authors', t2List:'Listed', t2p50:'P50 cites', t2p99:'P99 cites',
+  loadingList:'Loading list…', loadErr:m=>`The database could not be loaded: ${m}. Reload the page to try again.`,
+  csk:'Czechoslovakia', eue:'European Union'
+ }
+};
+let LANG = 'es';
+try{ const s=localStorage.getItem('t2lang'); if(s==='en'||s==='es') LANG=s; else if(!(navigator.language||'').toLowerCase().startsWith('es')) LANG='en'; }catch(e){}
+const t = k => STR[LANG][k];
+let regionNames = {};
+function mkRegion(){ try { regionNames[LANG] = regionNames[LANG] || new Intl.DisplayNames([LANG], {type:'region'}); } catch(e) {} }
+const fmt = n => n.toLocaleString(LANG==='es'?'es-PE':'en-US');
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+let META, DS = {}, cur = 'career';
+
+function applyStatic(){
+  document.documentElement.setAttribute('data-lang', LANG);
+  document.documentElement.setAttribute('lang', LANG);
+  document.querySelectorAll('[data-ph-es]').forEach(el => el.placeholder = el.getAttribute('data-ph-'+LANG));
+  document.querySelectorAll('option[data-es]').forEach(o => o.textContent = o.getAttribute('data-'+LANG));
+  document.querySelectorAll('.seg.lang button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang===LANG));
+  mkRegion();
+}
+function setLang(l){
+  LANG = l; try{ localStorage.setItem('t2lang', l); }catch(e){}
+  applyStatic(); drawT2();
+  if(META){ cnameCache.clear(); fillSelects(); syncForm(); renderTab(activeTab()); }
+}
+document.querySelectorAll('.seg.lang button').forEach(b => b.addEventListener('click', () => setLang(b.dataset.lang)));
+applyStatic();
+
+async function getGz(url, onProg){
+  const res = await fetch(url);
+  if(!res.ok) throw new Error(url+' '+res.status);
+  const b64 = (await res.text()).trim();
+  const bin = atob(b64); const buf = new Uint8Array(bin.length);
+  for(let x=0;x<bin.length;x++) buf[x]=bin.charCodeAt(x);
+  onProg && onProg();
+  if(buf[0]===0x1f && buf[1]===0x8b){
+    const ds = new Blob([buf]).stream().pipeThrough(new DecompressionStream('gzip'));
+    return new Uint8Array(await new Response(ds).arrayBuffer());
+  }
+  return buf;
+}
+const dec = new TextDecoder();
+async function loadDS(k, prog){
+  const [bin, names] = await Promise.all([getGz('data/'+k+'.txt', prog), getGz('data/'+k+'-names.txt', prog)]);
+  const n = META[k], d = {n};
+  let off = 0; const ab = bin.buffer.slice(bin.byteOffset, bin.byteOffset+bin.byteLength);
+  for(const [name, dt] of META.spec){
+    const C = dt==='u4'?Uint32Array:dt==='u2'?Uint16Array:Uint8Array;
+    d[name] = new C(ab, off, n); off += n*C.BYTES_PER_ELEMENT;
+  }
+  const nm = JSON.parse(dec.decode(names)); d.name = nm.n; d.mc = nm.mc;
+  d.nameLC = d.name.map(s => s.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase());
+  d.subcount = META['subcount_'+k];
+  const nc = META.countries.length, ni = META.insts.length, nf = META.fields.length;
+  d.cCount = new Uint32Array(nc); d.iCount = new Uint32Array(ni); d.fCount = new Uint32Array(nf);
+  d.iCountry = new Map();
+  for(let j=0;j<n;j++){
+    if(d.k[j]!==255) d.cCount[d.k[j]]++;
+    if(d.f[j]!==255) d.fCount[d.f[j]]++;
+    if(d.i[j]!==65535){ d.iCount[d.i[j]]++; if(d.k[j]!==255){ const key=d.i[j]*1000+d.k[j]; d.iCountry.set(key,(d.iCountry.get(key)||0)+1);} }
+  }
+  return d;
+}
+const cnameCache = new Map();
+function cname(ix){
+  if(ix===255||ix==null) return '—';
+  if(cnameCache.has(ix)) return cnameCache.get(ix);
+  const c = META.countries[ix]; let v;
+  if(c.a3==='csk') v=t('csk'); else if(c.a3==='eue') v=t('eue');
+  else { try { v = regionNames[LANG] ? regionNames[LANG].of(c.a2) : c.a3.toUpperCase(); } catch(e){ v = c.a3.toUpperCase(); } }
+  cnameCache.set(ix,v); return v;
+}
+const iname = ix => ix===65535 ? '—' : META.insts[ix];
+const fieldLabel = f => LANG==='es' ? (FIELD_ES[f]||f) : f;
+const fname = ix => ix===255 ? '—' : fieldLabel(META.fields[ix]);
+const sname = ix => ix===255 ? '—' : META.subs[ix];
+function pct(d,j,ns){ const cnt=d.subcount[d.s[j]]; const rk = ns? d.rsn[j]: d.rs[j]; return cnt? rk/cnt*100 : NaN; }
+function inclusion(d,j){ return (d.r[j]<=100000 || d.rn[j]<=100000) ? 'top' : 'sub'; }
+const listLabel = k => k==='career' ? t('careerL') : t('singleL');
+
+/* ---------- tabs ---------- */
+const tabs = [...document.querySelectorAll('nav.tabs button')];
+function showTab(id){
+  tabs.forEach(b => b.setAttribute('aria-selected', b.dataset.tab===id));
+  document.querySelectorAll('section.tab').forEach(s => s.hidden = s.id !== 'p-'+id);
+  if(id!=='metodo' && !DS.career) document.getElementById('loader').hidden=false;
+  try{ localStorage.setItem('t2tab', id); }catch(e){}
+  if(DS[cur]) renderTab(id);
+}
+tabs.forEach(b => b.addEventListener('click', () => showTab(b.dataset.tab)));
+function activeTab(){ return tabs.find(b=>b.getAttribute('aria-selected')==='true').dataset.tab; }
+function renderTab(id){ if(!DS[cur]) return; if(id==='resumen') renderResumen(); if(id==='explorar') runQuery(); if(id==='paises') renderPaises(); if(id==='inst') renderInst(); }
+
+async function setDS(k){
+  cur = k;
+  document.querySelectorAll('.seg button[data-ds]').forEach(x => x.setAttribute('aria-pressed', x.dataset.ds===cur));
+  if(!DS[cur]){ document.getElementById('summary').textContent=t('loadingList'); DS[cur]=await loadDS(cur); }
+  fillInstList();
+  renderTab(activeTab());
+}
+document.querySelectorAll('.seg button[data-ds]').forEach(b => b.addEventListener('click', () => setDS(b.dataset.ds)));
+
+/* ---------- resumen ---------- */
+function barList(el, items, max, onClick, meIx){
+  el.innerHTML = items.map(([label, v, v2, key]) => `<button class="bar${key===meIx?' me':''}" data-key="${key}" title="${esc(label)}">
+    <span class="nm">${esc(label)}</span>
+    <span class="track"><span class="fill" style="width:${(v/max*100).toFixed(2)}%"></span>${v2!=null?`<span class="fill2" style="width:${(v2/max*100).toFixed(2)}%"></span>`:''}</span>
+    <span class="val">${fmt(v)}</span></button>`).join('');
+  el.querySelectorAll('.bar').forEach(b => b.addEventListener('click', () => onClick(+b.dataset.key)));
+}
+function renderResumen(){
+  const d = DS[cur], other = DS[cur==='career'?'singleyr':'career'];
+  const both = d.b.reduce((a,x)=>a+x,0);
+  const nCountries = d.cCount.filter(x=>x>0).length, nInst = d.iCount.filter(x=>x>0).length;
+  const t2tot = T2[cur].find(r=>r[1]==='TOTAL');
+  document.getElementById('figs').innerHTML = [
+    [fmt(d.n), cur==='career'?t('inCareer'):t('inSingle')],
+    [fmt(t2tot[2]), t('evaluated')],
+    [(d.n/t2tot[2]*100).toFixed(2)+' %', t('share')],
+    [fmt(nCountries), t('countries')],
+    [fmt(nInst), t('insts')],
+    [fmt(both), t('both')],
+  ].map(([v,l])=>`<div class="fig"><span class="v">${v}</span><span class="l">${l}</span></div>`).join('');
+  document.getElementById('ds-desc').textContent = cur==='career' ? t('descCareer') : t('descSingle');
+  const order = [...d.cCount.keys()].sort((a,b)=>d.cCount[b]-d.cCount[a]).slice(0,20);
+  const max = Math.max(...order.map(k=>Math.max(d.cCount[k], other? other.cCount[k]:0)));
+  barList(document.getElementById('bars-cntry'), order.map(k=>[cname(k), d.cCount[k], other?other.cCount[k]:null, k]), max, k => gotoExplore({cntry:k}));
+  const fo = [...d.fCount.keys()].sort((a,b)=>d.fCount[b]-d.fCount[a]).filter(k=>d.fCount[k]>0);
+  barList(document.getElementById('bars-field'), fo.map(k=>[fname(k), d.fCount[k], null, k]), d.fCount[fo[0]], k => gotoExplore({field:k}));
+  const la = META.countries.map((c,ix)=>[c.a3,ix]).filter(([a])=>LATAM.includes(a)).map(([,ix])=>ix).filter(ix=>d.cCount[ix]>0).sort((a,b)=>d.cCount[b]-d.cCount[a]);
+  const perIx = META.countries.findIndex(c=>c.a3==='per');
+  barList(document.getElementById('bars-latam'), la.map(k=>[cname(k), d.cCount[k], other?other.cCount[k]:null, k]), Math.max(...la.map(k=>Math.max(d.cCount[k], other?other.cCount[k]:0))), k=>gotoExplore({cntry:k}), perIx);
+  const pi = new Map();
+  for(let j=0;j<d.n;j++) if(d.k[j]===perIx){ const i=d.i[j]; pi.set(i,(pi.get(i)||0)+1); }
+  const pl = [...pi.entries()].sort((a,b)=>b[1]-a[1]);
+  document.getElementById('peru-sub').textContent = t('peruSub')(fmt(d.cCount[perIx]), pl.length);
+  barList(document.getElementById('bars-peru'), pl.map(([i,v])=>[iname(i), v, null, i]), pl.length?pl[0][1]:1, i => gotoExplore({cntry:perIx, inst:i}));
+}
+
+/* ---------- explorer ---------- */
+const F = {name:'', cntry:-1, inst:-1, field:-1, sub:-1, sort:'r', incl:'', ns:false, page:0};
+const PAGE = 50;
+const $ = id => document.getElementById(id);
+function fillSelects(){
+  const cOpts = META.countries.map((c,ix)=>[cname(ix),ix]).sort((a,b)=>a[0].localeCompare(b[0],LANG));
+  const o = `<option value="-1">${t('allCountries')}</option>` + cOpts.map(([n,ix])=>`<option value="${ix}">${esc(n)}</option>`).join('');
+  const pic = $('pi-c').value;
+  $('f-cntry').innerHTML = o; $('pi-c').innerHTML = o; if(pic) $('pi-c').value = pic;
+  $('f-field').innerHTML = `<option value="-1">${t('allFields')}</option>` + META.fields.map((f,ix)=>[fname(ix),ix]).sort((a,b)=>a[0].localeCompare(b[0],LANG)).map(([n,ix])=>`<option value="${ix}">${esc(n)}</option>`).join('');
+  fillSubs();
+}
+function fillSubs(){
+  const fld = F.field>=0 ? META.fields[F.field] : null;
+  const subs = META.subs.map((s,ix)=>[s,ix]).filter(([s])=>!fld || T2.s2f[s]===fld);
+  $('f-sub').innerHTML = `<option value="-1">${t('allSubs')}</option>` + subs.map(([s,ix])=>`<option value="${ix}">${esc(s)}</option>`).join('');
+  $('f-sub').value = F.sub;
+}
+function fillInstList(){
+  const d = DS[cur]; if(!d) return; let list;
+  if(F.cntry>=0){ list=[]; d.iCountry.forEach((v,key)=>{ if(key%1000===F.cntry) list.push([Math.floor(key/1000),v]); }); }
+  else { list=[...d.iCount.keys()].filter(i=>d.iCount[i]>=5).map(i=>[i,d.iCount[i]]); }
+  list.sort((a,b)=>b[1]-a[1]);
+  $('dl-inst').innerHTML = list.slice(0,1500).map(([i,v])=>`<option value="${esc(META.insts[i])}">${t('nAuthors')(v)}</option>`).join('');
+}
+function syncForm(){
+  $('f-name').value=F.name; $('f-cntry').value=F.cntry; $('f-field').value=F.field; fillSubs();
+  $('f-sort').value=F.sort; $('f-incl').value=F.incl; $('f-ns').checked=F.ns;
+  $('f-inst').value = F.inst>=0 ? META.insts[F.inst] : (F.inst===-2 ? $('f-inst').value : '');
+  fillInstList();
+}
+function gotoExplore(p){
+  Object.assign(F,{name:'',cntry:-1,inst:-1,field:-1,sub:-1,incl:'',page:0},p);
+  syncForm(); showTab('explorar');
+}
+let instIndex;
+function readForm(){
+  F.name=$('f-name').value.trim(); F.cntry=+$('f-cntry').value; F.field=+$('f-field').value; F.sub=+$('f-sub').value;
+  F.sort=$('f-sort').value; F.incl=$('f-incl').value; F.ns=$('f-ns').checked;
+  const iv=$('f-inst').value.trim();
+  if(!iv) F.inst=-1; else { if(!instIndex) instIndex=new Map(META.insts.map((s,i)=>[s.toLowerCase(),i])); F.inst = instIndex.has(iv.toLowerCase()) ? instIndex.get(iv.toLowerCase()) : -2; F.instText=iv.toLowerCase(); }
+  F.page=0;
+}
+let tmr;
+$('filters').addEventListener('input', e => {
+  if(e.target.id==='f-field'){ F.field=+e.target.value; F.sub=-1; fillSubs(); }
+  if(e.target.id==='f-cntry'){ F.cntry=+e.target.value; fillInstList(); }
+  clearTimeout(tmr); tmr=setTimeout(()=>{ readForm(); runQuery(); }, e.target.type==='search'||e.target.id==='f-inst'?220:0);
+});
+$('filters').addEventListener('submit', e=>e.preventDefault());
+$('reset').addEventListener('click', ()=>gotoExplore({}));
+
+let lastRows=[];
+function runQuery(){
+  const d = DS[cur]; if(!d) return;
+  const q = F.name ? F.name.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase() : '';
+  let instSet = null;
+  if(F.inst===-2){ instSet=new Set(); META.insts.forEach((s,i)=>{ if(s.toLowerCase().includes(F.instText)) instSet.add(i); }); }
+  const rows=[];
+  for(let j=0;j<d.n;j++){
+    if(F.cntry>=0 && d.k[j]!==F.cntry) continue;
+    if(F.inst>=0 && d.i[j]!==F.inst) continue;
+    if(instSet && !instSet.has(d.i[j])) continue;
+    if(F.field>=0 && d.f[j]!==F.field) continue;
+    if(F.sub>=0 && d.s[j]!==F.sub) continue;
+    if(F.incl && inclusion(d,j)!==F.incl) continue;
+    if(q && !d.nameLC[j].includes(q)) continue;
+    rows.push(j);
+  }
+  const rk = F.ns ? d.rn : d.r;
+  const key = {r:j=>rk[j], pct:j=>pct(d,j,F.ns), h:j=>-d.h[j], nc:j=>-d.nc[j], sp:j=>-d.sp[j], fy:j=>d.fy[j]||9999}[F.sort];
+  rows.sort((a,b)=>key(a)-key(b) || rk[a]-rk[b]);
+  lastRows=rows;
+  const cs=new Set(), is=new Set(); let sp=0, rw=0;
+  for(const j of rows){ cs.add(d.k[j]); is.add(d.i[j]); sp+=d.sp[j]; if(d.rw[j]>0) rw++; }
+  const med = rows.length ? rows.map(j=>pct(d,j,false)).sort((a,b)=>a-b)[Math.floor(rows.length/2)] : NaN;
+  $('summary').innerHTML = `<span><b>${fmt(rows.length)}</b> ${t('scientists')}</span><span><b>${fmt(cs.size)}</b> ${t('countriesW')}</span><span><b>${fmt(is.size)}</b> ${t('instsW')}</span>`+
+    (rows.length?`<span>${t('medPct')}: <b>${med.toFixed(2)} %</b></span><span>${t('avgSelf')}: <b>${(sp/rows.length/10).toFixed(1)} %</b></span><span>${t('withRetr')}: <b>${fmt(rw)}</b></span>`:'');
+  const ok = cur==='career'?'singleyr':'career', od = DS[ok];
+  if(q && od){
+    let m=0; for(let j=0;j<od.n;j++) if(od.nameLC[j].includes(q)) m++;
+    if(m>0){
+      const lbl = listLabel(ok);
+      $('summary').insertAdjacentHTML('beforeend', `<span class="xhint">${t('hint')(esc(F.name), fmt(m), lbl, !rows.length)} <button class="btn" id="go-other" type="button">${t('seeIn')(lbl)}</button></span>`);
+      $('go-other').onclick=()=>setDS(ok);
+    }
+  }
+  drawTable();
+}
+function drawTable(){
+  const d = DS[cur], rows=lastRows, start=F.page*PAGE, slice=rows.slice(start,start+PAGE);
+  const ns=F.ns, rk = ns? d.rn : d.r;
+  const th = (k,l,cls='')=>`<th class="${cls}${k?' sortable':''}${F.sort===k?' sorted':''}" ${k?`data-k="${k}"`:''}>${l}</th>`;
+  $('tbl').tHead.innerHTML = `<tr>${th('','#','n')}${th('',t('thAuthor'))}${th('',t('thCountry'),'hide-sm')}${th('',t('thSub'),'hide-sm')}${th('r',t('thRank')+(ns?' ns':''),'n')}${th('pct',t('thPct'),'n')}${th('','c-score','n hide-sm')}${th('h','h','n')}${th('nc',cur==='career'?t('thCitC'):t('thCitS'),'n hide-sm')}${th('sp',t('thSelf'),'n hide-sm')}</tr>`;
+  $('tbl').tHead.querySelectorAll('th[data-k]').forEach(el=>el.addEventListener('click',()=>{F.sort=el.dataset.k; $('f-sort').value=F.sort; runQuery();}));
+  if(!slice.length){ $('tbl').tBodies[0].innerHTML = `<tr><td colspan="10" class="empty">${t('noRows')}</td></tr>`; $('pager').innerHTML=''; return; }
+  $('tbl').tBodies[0].innerHTML = slice.map((j,ix)=>{
+    const p=pct(d,j,ns);
+    return `<tr data-j="${j}" tabindex="0"><td class="n">${fmt(start+ix+1)}</td>
+    <td><div class="who">${esc(d.name[j])}</div><div class="aff">${esc(iname(d.i[j]))}</div></td>
+    <td class="hide-sm">${esc(cname(d.k[j]))}</td><td class="hide-sm">${esc(sname(d.s[j]))}</td>
+    <td class="n">${fmt(rk[j])}</td><td class="n"><span class="pill ${p<=2?'t1':''}">${p.toFixed(2)} %</span></td>
+    <td class="n hide-sm">${(d.c[j]/1000).toFixed(3)}</td><td class="n">${d.h[j]}</td>
+    <td class="n hide-sm">${fmt(d.nc[j])}</td><td class="n hide-sm">${(d.sp[j]/10).toFixed(1)} %</td></tr>`;
+  }).join('');
+  $('tbl').tBodies[0].querySelectorAll('tr').forEach(tr=>{ const o=()=>openDetail(+tr.dataset.j); tr.addEventListener('click',o); tr.addEventListener('keydown',e=>{if(e.key==='Enter')o();}); });
+  const pages=Math.ceil(rows.length/PAGE);
+  $('pager').innerHTML = `<button class="btn" id="pg-prev" ${F.page===0?'disabled':''}>${t('prev')}</button><span>${t('page')(F.page+1, fmt(pages))}</span><button class="btn" id="pg-next" ${F.page>=pages-1?'disabled':''}>${t('next')}</button>`;
+  $('pg-prev').onclick=()=>{F.page--;drawTable();window.scrollTo({top:$('tbl').offsetTop-80});};
+  $('pg-next').onclick=()=>{F.page++;drawTable();window.scrollTo({top:$('tbl').offsetTop-80});};
+}
+function openDetail(j){
+  const d=DS[cur]; const p=pct(d,j,false), pn=pct(d,j,true), cnt=d.subcount[d.s[j]];
+  const incl = inclusion(d,j)==='top' ? t('incTop') : t('incSub');
+  const mc = d.mc[j] ? d.mc[j].split(';').map(a=>{const ix=META.countries.findIndex(c=>c.a3===a.toLowerCase()); return ix>=0?cname(ix):a;}).join(', ') : '—';
+  const k = (l,v)=>`<div><dt>${l}</dt><dd>${v}</dd></div>`;
+  $('dlg-body').innerHTML = `<header><div style="display:grid;gap:4px"><span class="eyebrow">${cur==='career'?t('listC'):t('listS')}</span><h2>${esc(d.name[j])}</h2>
+    <span class="sub">${esc(iname(d.i[j]))} · ${esc(cname(d.k[j]))}</span></div><button class="btn" id="dlg-x">${t('close')}</button></header>
+    <div class="chips" style="pointer-events:none"><span class="pill t1">${incl}</span>${d.b[j]?`<span class="pill t1">${t('inBoth')}</span>`:''}${d.rw[j]?`<span class="pill warn">${t('retr')(d.rw[j])}</span>`:''}</div>
+    <dl class="kv" style="margin:0">
+      ${k(t('kRank'), fmt(d.r[j]))}${k(t('kRankNs'), fmt(d.rn[j]))}
+      ${k(t('kRankSub'), `${fmt(d.rs[j])} / ${fmt(cnt)}`)}${k(t('kPct'), p.toFixed(2)+' %')}
+      ${k(t('kPctNs'), pn.toFixed(2)+' %')}${k('c-score', (d.c[j]/1000).toFixed(3))}
+      ${k(t('kH'), d.h[j])}${k(cur==='career'?t('kCitC'):t('kCitS'), fmt(d.nc[j]))}
+      ${k(t('kSelf'), (d.sp[j]/10).toFixed(1)+' %')}${k(t('kPapers'), fmt(d.np[j]))}
+      ${k(t('kYears'), `${d.fy[j]||'—'} / ${d.ly[j]||'—'}`)}${k(t('kField'), esc(fname(d.f[j])))}
+    </dl>
+    <p class="sub"><b>${t('mainSub')}:</b> ${esc(sname(d.s[j]))}. <b>${t('multiC')}:</b> ${esc(mc)}.</p>
+    <p class="note">${t('pctNote')}</p>`;
+  $('dlg').showModal(); $('dlg-x').onclick=()=>$('dlg').close();
+}
+$('dlg').addEventListener('click', e=>{ if(e.target.id==='dlg') $('dlg').close(); });
+
+/* ---------- países ---------- */
+let cSort='career';
+function renderPaises(){
+  const a=DS.career, b=DS.singleyr, d=DS[cur];
+  const q=$('pc-q').value.trim().toLowerCase();
+  const medP = new Map(); const bucket = new Map();
+  for(let j=0;j<d.n;j++){ const k=d.k[j]; if(k===255) continue; if(!bucket.has(k)) bucket.set(k,[]); bucket.get(k).push(pct(d,j,false)); }
+  bucket.forEach((v,k)=>{ v.sort((x,y)=>x-y); medP.set(k, v[Math.floor(v.length/2)]); });
+  const topI = new Map();
+  d.iCountry.forEach((v,key)=>{ const k=key%1000, i=Math.floor(key/1000); if(!topI.has(k)||topI.get(k)[1]<v) topI.set(k,[i,v]); });
+  let rows = META.countries.map((c,ix)=>ix).filter(ix=>(a&&a.cCount[ix])||(b&&b.cCount[ix]));
+  if(q) rows = rows.filter(ix=>cname(ix).toLowerCase().includes(q)||META.countries[ix].a3.includes(q));
+  const get = {career:ix=>a?a.cCount[ix]:0, singleyr:ix=>b?b.cCount[ix]:0, med:ix=>-(medP.get(ix)??999)};
+  rows.sort((x,y)=>get[cSort](y)-get[cSort](x));
+  const th=(k,l,cls='')=>`<th class="${cls}${k?' sortable':''}${cSort===k?' sorted':''}" ${k?`data-k="${k}"`:''}>${l}</th>`;
+  $('tbl-c').tHead.innerHTML=`<tr>${th('','#','n')}${th('',t('thCountry'))}${th('career',t('careerL'),'n')}${th('singleyr',t('singleL'),'n')}${th('med',t('medPctCol'),'n')}${th('',t('topInst'),'hide-sm')}</tr>`;
+  $('tbl-c').tHead.querySelectorAll('th[data-k]').forEach(el=>el.onclick=()=>{cSort=el.dataset.k;renderPaises();});
+  const perIx = META.countries.findIndex(c=>c.a3==='per');
+  $('tbl-c').tBodies[0].innerHTML = rows.map((ix,n)=>{ const ti=topI.get(ix); return `<tr data-k="${ix}" class="${ix===perIx?'me-row':''}"><td class="n">${n+1}</td><td>${esc(cname(ix))}</td><td class="n">${a?fmt(a.cCount[ix]):'…'}</td><td class="n">${b?fmt(b.cCount[ix]):'…'}</td><td class="n">${medP.has(ix)?medP.get(ix).toFixed(2)+' %':'—'}</td><td class="hide-sm">${ti?esc(iname(ti[0]))+` <span class="note">(${ti[1]})</span>`:'—'}</td></tr>`; }).join('');
+  $('tbl-c').tBodies[0].querySelectorAll('tr').forEach(tr=>tr.onclick=()=>gotoExplore({cntry:+tr.dataset.k}));
+}
+$('pc-q').addEventListener('input', ()=>renderPaises());
+
+/* ---------- instituciones ---------- */
+let iPage=0;
+function renderInst(){
+  const a=DS.career, b=DS.singleyr; const c=+$('pi-c').value; const q=$('pi-q').value.trim().toLowerCase();
+  const m=new Map();
+  for(const [ds,col] of [[a,0],[b,1]]){ if(!ds) continue; ds.iCountry.forEach((v,key)=>{ const k=key%1000; if(c>=0&&k!==c) return; const i=Math.floor(key/1000); if(!m.has(key)) m.set(key,[i,k,0,0]); m.get(key)[2+col]+=v; }); }
+  let rows=[...m.values()]; if(q) rows=rows.filter(r=>META.insts[r[0]].toLowerCase().includes(q));
+  const ci = cur==='career'?2:3; rows.sort((x,y)=>y[ci]-x[ci]||y[5-ci]-x[5-ci]);
+  $('tbl-i').tHead.innerHTML=`<tr><th class="n">#</th><th>${t('instCol')}</th><th class="hide-sm">${t('thCountry')}</th><th class="n${ci===2?' sorted':''}">${t('careerL')}</th><th class="n${ci===3?' sorted':''}">${t('singleL')}</th></tr>`;
+  const pages=Math.max(1,Math.ceil(rows.length/PAGE)); if(iPage>=pages) iPage=0;
+  const sl=rows.slice(iPage*PAGE,iPage*PAGE+PAGE);
+  $('tbl-i').tBodies[0].innerHTML = sl.length? sl.map((r,n)=>`<tr data-i="${r[0]}" data-k="${r[1]}"><td class="n">${iPage*PAGE+n+1}</td><td>${esc(META.insts[r[0]])}</td><td class="hide-sm">${esc(cname(r[1]))}</td><td class="n">${fmt(r[2])}</td><td class="n">${b?fmt(r[3]):'…'}</td></tr>`).join('') : `<tr><td colspan="5" class="empty">${t('noInst')}</td></tr>`;
+  $('tbl-i').tBodies[0].querySelectorAll('tr[data-i]').forEach(tr=>tr.onclick=()=>gotoExplore({cntry:+tr.dataset.k, inst:+tr.dataset.i}));
+  $('pager-i').innerHTML=`<button class="btn" id="pi-prev" ${iPage===0?'disabled':''}>${t('prev')}</button><span>${t('page')(iPage+1, fmt(pages))} · ${t('instsN')(fmt(rows.length))}</span><button class="btn" id="pi-next" ${iPage>=pages-1?'disabled':''}>${t('next')}</button>`;
+  $('pi-prev').onclick=()=>{iPage--;renderInst();}; $('pi-next').onclick=()=>{iPage++;renderInst();};
+}
+$('pi-c').addEventListener('input',()=>{iPage=0;renderInst();}); $('pi-q').addEventListener('input',()=>{iPage=0;renderInst();});
+
+/* ---------- método: tabla 2 ---------- */
+function drawT2(){
+  const rows=T2.career.filter(r=>r[0]);
+  $('tbl-t2').tHead.innerHTML=`<tr><th>${t('t2Field')}</th><th class="n">${t('t2Auth')}</th><th class="n">${t('t2List')}</th><th class="n">${t('t2p50')}</th><th class="n">${t('t2p99')}</th></tr>`;
+  $('tbl-t2').tBodies[0].innerHTML=rows.map(r=>`<tr style="cursor:default"><td>${esc(fieldLabel(r[1]))}</td><td class="n">${fmt(r[2])}</td><td class="n">${fmt(r[3])}</td><td class="n">${fmt(r[4])}</td><td class="n">${fmt(r[5])}</td></tr>`).join('');
+}
+drawT2();
+
+/* ---------- boot ---------- */
+(async function(){
+  const bar=$('load-bar'); let done=0; const prog=()=>{done++; bar.style.width=(done/5*100)+'%';};
+  try{
+    META = JSON.parse(dec.decode(await getGz('data/meta.txt'))); prog();
+    DS.career = await loadDS('career', prog);
+    fillSelects(); syncForm();
+    $('loader').hidden=true;
+    let tb='resumen'; try{ tb=localStorage.getItem('t2tab')||'resumen'; }catch(e){}
+    const h=location.hash.replace('#','');
+    if(h==='en'||h==='es') setLang(h);
+    if(['resumen','explorar','paises','inst','metodo'].includes(h)) tb=h;
+    showTab(tb);
+    DS.singleyr = await loadDS('singleyr', prog);
+    renderTab(activeTab());
+  }catch(err){
+    $('load-msg').textContent=t('loadErr')(err.message);
+  }
+})();
+</script>
+
+</body></html>
